@@ -3,8 +3,7 @@
 <title>Registreation</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 <style>
 #custom-bootstrap-menu.navbar-default .navbar-brand {
 	color: rgba(255, 255, 255, 1);
@@ -47,6 +46,58 @@
 </style>
 </head>
 <body>
+		<script>
+			
+			function formValidation()
+			{
+			var uid = document.getElementById("nameid");
+			var passid = document.registration.passid;
+			var uname = document.registration.username;
+			var uadd = document.registration.address;
+			var ucountry = document.registration.country;
+			var uzip = document.registration.zip;
+			var uemail = document.registration.email;
+			var umsex = document.registration.msex;
+			var ufsex = document.registration.fsex; if(userid_validation(uid,5,12))
+			{
+			if(passid_validation(passid,7,12))
+			{
+			if(allLetter(uname))
+			{
+			if(alphanumeric(uadd))
+			{ 
+			if(countryselect(ucountry))
+			{
+			if(allnumeric(uzip))
+			{
+			if(ValidateEmail(uemail))
+			{
+			if(validsex(umsex,ufsex))
+			{
+			}
+			} 
+			}
+			} 
+			}
+			}
+			}
+			}
+			return false;
+			}
+			function userid_validation(uid,mx,my)
+			{
+			var uid_len = uid.value.length;
+			if (uid_len == 0 || uid_len >= my || uid_len < mx)
+			{
+			alert("User Id should not be empty / length be between "+mx+" to "+my);
+			uid.focus();
+			return false;
+			}
+			return true;
+			}
+			
+	
+			</script>	
 	<div id="custom-bootstrap-menu" class="navbar navbar-default " role="navigation">
 		<div class="container-fluid">
 			<div class="navbar-header"><a class="navbar-brand" href="#">Sinan Avcık</a>
@@ -74,23 +125,23 @@
 		</div>
 	</div>
 <div class="container-fulied">	
-<form class="form-horizontal" action="calculator.html">
+<form name="formum" class="form-horizontal" onsubmit="return formValidation();" action="calculator.html" >
  <div class="form-group">
       <label class="control-label col-sm-2" for="email">Email:</label>
 	  <div class="col-sm-10">
-      <input type="email" class="form-control" id="email" placeholder="Email" required>
+      <input type="email" class="form-control" id="email" placeholder="Email">
 		</div>
 	</div>
 <div class="form-group">
 		 <label class="control-label col-sm-2"for="password">Password:</label>
 		 <div class="col-sm-10">
-         <input type="password" class="form-control"id="password" placeholder="Password" required><br>
+         <input type="password" class="form-control"id="upassword" placeholder="Password"><br>
 		 </div>
 	</div>
 <div class="form-group">
 		 <label class="control-label col-sm-2" for="birthday">Birthday:</label>
 		 <div class="col-sm-10">
-         <input type="date" class="form-control" id="birthday" name="birthday" placeholder="dd.mm.yyyy" required><br>
+         <input type="date" class="form-control" id="ubirthday" name="birthday" placeholder="dd.mm.yyyy" ><br>
 		 </div>
 	</div>
 		 <div class="form-group">
@@ -112,13 +163,13 @@
 		<div class="form-group">
 		 <label class="control-label col-sm-2" for="name">Name:</label>
 		 <div class="col-sm-10">
-		 <input type="text" class="form-control" id="name" name="name" placeholder="Name" required><br>
+		 <input type="text" class="form-control" id="nameid" name="name" placeholder="Name" ><br>
 		 </div>
 	</div>
 		<div class="form-group">
 		 <label class="control-label col-sm-2" for="surname">Surname:</label>
 		 <div class="col-sm-10">
-		 <input type="text" class="form-control" id="surname" name="surname" placeholder="Surname" required><br>
+		 <input type="text" class="form-control" id="surname" name="surname" placeholder="Surname" ><br>
 		 </div>
 	</div>
 		<div class="form-group">
@@ -163,14 +214,11 @@
 		
 		
 		
-		 <input type="submit" class="btn btn-info" id="ok" value="SUBMIT">
-		 <input type="reset" class="btn btn-info" id="reset" value="RESET">
-	
-	
-	
-	
+		 <input type="submit" class="btn btn-info" name= id="ok" value="SUBMIT">
+		 <input type="reset" class="btn btn-info" id="reset" value="RESET">	
 		  
 		</form>
+		
 		</body>
 	
 </html>		

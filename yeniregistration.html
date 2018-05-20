@@ -1,0 +1,150 @@
+<html>
+        <head>
+        <meta charset="utf-8">
+        </head>
+        <body onload="document.registration.userid.focus();">
+                <script>
+                  
+                  function formValidation()
+                  {
+                
+                  var uid = document.getElementById("nameid");
+                  var passid = document.getElementById("passid");
+                  var sid = document.getElementById("snameid");
+                  var emaili = document.getElementById("emailid");
+                  var uname = document.registration.username;
+                  var uadd = document.registration.address;
+                  var ucountry = document.registration.country;
+                  var uzip = document.registration.zip;
+                  var uemail = document.registration.email;
+                  var umsex = document.registration.msex;
+                  var ufsex = document.registration.fsex; if(userid_validation(uid))
+                  {
+                  if(sid_validation(sid))
+                  {       
+                  if(passid_validation(passid,6,15))
+                  {
+                  if(allLetter(uid,sid))
+                  {
+                  if(ValidateEmail(emaili))
+                  {
+                          window.location.href = "calculator.html"
+                  }
+                  }
+                  }
+                  }
+                  }
+                  return false;
+                  }
+
+
+
+                  function userid_validation(uid)
+                  {
+                  var uid_len = uid.value.length;
+                  if (uid_len == 0)
+                  {
+                  alert("Name should not be empty");
+                  uid.focus();
+                  return false;
+                  }
+                  if(uid)
+                  return true;
+                  }
+
+                  function sid_validation(sid)
+                  {
+                  var sid_len = sid.value.length;
+                  if (sid_len == 0)
+                  {
+                  alert("Surname should not be empty ");
+                  sid.focus();
+                  return false;
+                  }
+                  if(sid)
+                  return true;
+                  }
+
+
+                  function passid_validation(passid,mx,my)
+                  {
+                  var pas_len = passid.value.length;
+                  if (pas_len == 0 || pas_len >= my || pas_len < mx)
+                  {
+                  alert("Password should not be empty / length be between "+mx+" to "+my);
+                  passid.focus();
+                  return false;
+                  }
+                  
+                  return true;
+                  }
+
+                function allLetter(uid,sid){ 
+                var letters = /^[A-Za-z]+$/;
+                if(uid.value.match(letters) && sid.value.match(letters)){
+                return true;
+                }
+                else{
+                alert('Name and Surname must have alphabet characters only');
+                uid.focus();
+                return false;
+                }
+                }
+
+                function ValidateEmail(emaili) {
+                var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+                if(emaili.value.match(mailformat)){
+                return true;
+                }
+                else{
+                alert("You have entered an invalid email address!");
+                emaili.focus();
+                return false;
+                }
+                }
+
+
+
+                    </script>
+        <h1>Registration Form</h1>
+        <form name='registration' onsubmit="return formValidation();" action="calculator.html">
+        <ul>
+        <li><label for="nameid">Name:</label></li>
+        <li><input type="text" name="uname" id="nameid" size="12" /></li>
+        <li><label for="snameid">Surname:</label></li>
+        <li><input type="text" name="suname" id="snameid" size="12" /></li>
+        <li><label for="passid">Password:</label></li>
+        <li><input type="password" name="passid" id="passid"  /></li>
+        <li><label for="emailid">Email:</label></li>
+        <li><input type="text" name="email" id="emailid" size="50" /></li>   
+        <label class="control-label col-sm-2" for="gender">Gender:</label>
+        <label class="radio-inline"><input type="radio" name="optradio">Male</label>
+        <label class="radio-inline"><input type="radio" name="optradio">Female</label><br> 
+        <label for="birthday">Birthday:</label>
+        <input type="date" id="ubirthday" name="birthday" placeholder="dd.mm.yyyy" ><br>
+        <label for="interest">Your Interests:</label><br>
+        <div class="container">
+        <div class="checkbox">
+        <label><input type="checkbox" name="interest" value="basketball">Movies</label>
+        </div>
+        <div class="checkbox">
+        <label><input type="checkbox" name="interest" value="videogames">Video Games</label>
+        </div>
+        <div class="checkbox">
+        <label><input type="checkbox" name="interest" value="music">Books</label>
+        </div>
+        <div class="checkbox">
+        <label><input type="checkbox" name="interest" value="baseball">Football</label>
+        </div>
+       
+        
+        
+</ul>
+        <input type="submit" name="submit" value="Submit" />
+        <input type="reset"  id="reset" value="Reset">
+        	
+        
+        </form>
+        
+        </body>
+        </html>
